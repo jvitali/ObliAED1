@@ -130,7 +130,7 @@ public class Sistema implements ISistema {
 
     @Override
     public Retorno ImprimirLinea(int posicionLinea) {
-        Retorno r = new Retorno(Retornfo.Resultado.NO_IMPLEMENTADA);
+        Retorno r = new Retorno(Retorno.Resultado.NO_IMPLEMENTADA);
         return r;
     }
 
