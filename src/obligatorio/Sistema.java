@@ -1,8 +1,9 @@
 package obligatorio;
 
 import obligatorio.Interfaces.ISistema;
-import obligatorio.Listas.ListaCarpetas;
 import obligatorio.Listas.ListaPalabras;
+import obligatorio.Listas.ListaUnidades;
+import obligatorio.Nodos.NodoUnidad;
 import obligatorio.Nodos.NodoArchivo;
 import obligatorio.Nodos.NodoCarpeta;
 
@@ -10,20 +11,19 @@ public class Sistema implements ISistema {
 
     int maxCantPalabras;
     int ciudades[][];
-    ListaCarpetas carpetas;
+    ListaUnidades unidades;
     ListaPalabras diccionario;
 
     public Sistema(int maxCantPalabras) {
         this.maxCantPalabras = maxCantPalabras;
-        this.carpetas = new ListaCarpetas();
+        unidades = new ListaUnidades();
+        diccionario = new ListaPalabras();
     }
 
     @Override
     public Retorno CrearSistemaMensajes() {
         Retorno r = new Retorno(Retorno.Resultado.OK);
-        int[][] ciudades = {{0, 10, 25, 15, 30, 0}, {10, 0, 20, 0, 0, 0}, {25, 20, 0, 0, 0, 40}, {15, 0, 0, 0, 0, 45}, {30, 0, 0, 0, 0, 25}, {0, 0, 40, 45, 25, 0}};
-        carpetas = new ListaCarpetas();
-        diccionario = new ListaPalabras();
+        NodoUnidad inicio = unidades.getInicio();
         return r;
     }
 
@@ -36,19 +36,19 @@ public class Sistema implements ISistema {
     @Override
     public Retorno AgregarCarpeta(String unidad, String carpeta) { //Que hacer con la unidad
         Retorno r = new Retorno(Retorno.Resultado.OK);
-        carpetas.Agregar(carpeta);
+        r.valorBoolean = unidades.getInicio().getCarpetas().Agregar(carpeta); //Si fuera mas de una unidad, en vez de inicio seria buscar
         return r;
     }
 
     @Override
-    public Retorno EliminarCarpeta(String unidad, String carpeta) {
+    public Retorno EliminarCarpeta(String unidad, String carpeta) { //Pregunta
         Retorno r = new Retorno(Retorno.Resultado.NO_IMPLEMENTADA);
-        
+        r.valorBoolean = unidades.getInicio().getCarpetas().Borrar(carpeta);
         return r;
     }
 
     @Override
-    public Retorno ListarEstructura(String unidad, String carpeta) {
+    public Retorno ListarEstructura(String unidad, String carpeta) { //Solo el contenido de la carpeta???
         Retorno r = new Retorno(Retorno.Resultado.NO_IMPLEMENTADA);
         return r;
     }
@@ -57,7 +57,7 @@ public class Sistema implements ISistema {
     public Retorno AgregarMensaje(String unidad, String carpeta, String mensaje) {
         NodoArchivo nuevo = new NodoArchivo(mensaje);
         //en lugar de ser get inicio deberia ser buscar por unidad y nombre carpeta
-        carpetas.getInicio().getArchivos().Agregar(nuevo);
+        //carpetas.getInicio().getArchivos().Agregar(nuevo);
         Retorno r = new Retorno(Retorno.Resultado.NO_IMPLEMENTADA);
         return r;
     }
