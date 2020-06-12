@@ -3,6 +3,7 @@ package obligatorio.Listas;
 import obligatorio.Interfaces.IListas;
 import obligatorio.Nodos.NodoArchivo;
 
+
 public class ListaArchivos implements IListas {
 
     NodoArchivo inicio;
@@ -16,7 +17,7 @@ public class ListaArchivos implements IListas {
             ret = true;
         }
         this.inicio = nuevo;
-        return  ret;
+        return ret;
     }
 
     @Override
@@ -47,15 +48,26 @@ public class ListaArchivos implements IListas {
     }
 
     @Override
-    public boolean Buscar(Object dato) {
-        boolean ret = false;
+    public Object Buscar(Object dato) {
         NodoArchivo aux = this.inicio;
         if (!this.EsVacia()) {
             while (aux != null && aux.getDato() != dato) {
                 aux = aux.getSiguiente();
             }
-            if (aux != null) {
-                ret = true;
+        }
+        return aux;
+    }
+    
+    public boolean Borrar(Object dato) {
+        boolean ret = false;
+        NodoArchivo aux = this.inicio;
+        if (!this.EsVacia()) {
+            while (aux != null && ret != true) {
+                if (aux.getSiguiente().getDato() == dato) {
+                    aux.setSiguiente(aux.getSiguiente().getSiguiente());
+                    ret = true;
+                }
+                aux = aux.getSiguiente();
             }
         }
         return ret;

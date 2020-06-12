@@ -30,6 +30,7 @@ public class Sistema implements ISistema {
     @Override
     public Retorno DestruirSistemaMensajes() {
         Retorno r = new Retorno(Retorno.Resultado.NO_IMPLEMENTADA);
+        diccionario.Vaciar();
         return r;
     }
 
@@ -50,6 +51,7 @@ public class Sistema implements ISistema {
     @Override
     public Retorno ListarEstructura(String unidad, String carpeta) { //Solo el contenido de la carpeta???
         Retorno r = new Retorno(Retorno.Resultado.NO_IMPLEMENTADA);
+        //r.valorString = unidades.getInicio().getCarpetas().Imprimir();
         return r;
     }
 
@@ -58,66 +60,70 @@ public class Sistema implements ISistema {
         NodoArchivo nuevo = new NodoArchivo(mensaje);
         //en lugar de ser get inicio deberia ser buscar por unidad y nombre carpeta
         //carpetas.getInicio().getArchivos().Agregar(nuevo);
-        Retorno r = new Retorno(Retorno.Resultado.NO_IMPLEMENTADA);
+        Retorno r = new Retorno(Retorno.Resultado.OK);
+        NodoCarpeta aux = (NodoCarpeta) unidades.getInicio().getCarpetas().Buscar(carpeta);
+        r.valorBoolean = aux.getArchivos().Agregar(mensaje);
         return r;
     }
 
     @Override
     public Retorno EliminarMensaje(String unidad, String carpeta, String mensaje) {
         Retorno r = new Retorno(Retorno.Resultado.NO_IMPLEMENTADA);
+        NodoCarpeta aux = (NodoCarpeta) unidades.getInicio().getCarpetas().Buscar(carpeta);
+        r.valorBoolean = aux.getArchivos().Borrar(mensaje);
         return r;
     }
 
     @Override
-    public Retorno InsertarLinea() {
+    public Retorno InsertarLinea() { //A QUIEN?
         Retorno r = new Retorno(Retorno.Resultado.NO_IMPLEMENTADA);
         return r;
     }
 
     @Override
-    public Retorno InsertarLineaEnPosicion(int posicionLinea) {
+    public Retorno InsertarLineaEnPosicion(int posicionLinea) { //A QUE ARCHIVO?
         Retorno r = new Retorno(Retorno.Resultado.NO_IMPLEMENTADA);
         return r;
     }
 
     @Override
-    public Retorno BorrarLinea(int posicionLinea) {
+    public Retorno BorrarLinea(int posicionLinea) {//A QUE ARCHIVO?
         Retorno r = new Retorno(Retorno.Resultado.NO_IMPLEMENTADA);
         return r;
     }
 
     @Override
-    public Retorno BorrarTodo() {
+    public Retorno BorrarTodo() {//A QUE ARCHIVO?
         Retorno r = new Retorno(Retorno.Resultado.NO_IMPLEMENTADA);
         return r;
     }
 
     @Override
-    public Retorno BorrarOcurrenciasPalabraEnTexto(String palabraABorrar) {
+    public Retorno BorrarOcurrenciasPalabraEnTexto(String palabraABorrar) {//A QUE ARCHIVO?
         Retorno r = new Retorno(Retorno.Resultado.NO_IMPLEMENTADA);
         return r;
     }
 
     @Override
-    public Retorno ImprimirTexto() {
+    public Retorno ImprimirTexto() {//A QUE ARCHIVO?
         Retorno r = new Retorno(Retorno.Resultado.NO_IMPLEMENTADA);
         return r;
     }
 
     @Override
-    public Retorno InsertarPalabraEnLinea(int posicionLinea, int posicionPalabra, String palabraAIngresar) {
+    public Retorno InsertarPalabraEnLinea(int posicionLinea, int posicionPalabra, String palabraAIngresar) {//A QUE ARCHIVO?
         Retorno r = new Retorno(Retorno.Resultado.NO_IMPLEMENTADA);
         return r;
     }
 
     @Override
-    public Retorno InsertarPalabraYDesplazar(int posicionLinea, int posicionPalabra, String palabraAIngresar) {
+    public Retorno InsertarPalabraYDesplazar(int posicionLinea, int posicionPalabra, String palabraAIngresar) {//A QUE ARCHIVO?
         Retorno r = new Retorno(Retorno.Resultado.NO_IMPLEMENTADA);
         return r;
     }
 
     @Override
-    public Retorno BorrarPalabra(int posicionLinea, int posicionPalabra) {
+    public Retorno BorrarPalabra(int posicionLinea, int posicionPalabra) {//A QUE ARCHIVO?
         Retorno r = new Retorno(Retorno.Resultado.NO_IMPLEMENTADA);
         return r;
     }
@@ -131,6 +137,7 @@ public class Sistema implements ISistema {
     @Override
     public Retorno ImprimirLinea(int posicionLinea) {
         Retorno r = new Retorno(Retorno.Resultado.NO_IMPLEMENTADA);
+        //r.valorString = unidades.getInicio().getCarpetas().getInicio().getArchivos().Buscar("Archivo1");
         return r;
     }
 

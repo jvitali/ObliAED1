@@ -58,19 +58,16 @@ public class ListaCarpetas implements IListas {
         this.inicio = null;
     }
 
-    @Override
-    public boolean Buscar(Object dato) {
-        boolean ret = false;
+    
+    public Object Buscar(Object dato) {
+        
         NodoCarpeta aux = this.inicio;
         if (!this.EsVacia()) {
             while (aux != null && aux.getDato() != dato) {
                 aux = aux.getSiguiente();
             }
-            if (aux != null) {
-                ret = true;
-            }
         }
-        return ret;
+        return aux;
     }
 
     public boolean Borrar(Object dato) {

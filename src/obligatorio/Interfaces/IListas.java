@@ -12,5 +12,5 @@ public interface IListas {
 
     public void Vaciar();
 
-    public boolean Buscar(Object dato);
+    public Object Buscar(Object dato);
 }
