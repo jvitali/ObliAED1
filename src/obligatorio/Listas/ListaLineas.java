@@ -8,12 +8,15 @@ public class ListaLineas implements IListas {
     NodoLinea inicio;
 
     @Override
-    public void Agregar(Object dato) {
+    public boolean Agregar(Object dato) {
         NodoLinea nuevo = new NodoLinea(dato);
-        if (!this.EsVacia()) {
+        Boolean ret = false;
+        if (!this.EsVacia() && !Buscar(dato)) {
             nuevo.setSiguiente(this.inicio);
+            ret = true;
         }
         this.inicio = nuevo;
+        return  ret;
     }
 
     @Override

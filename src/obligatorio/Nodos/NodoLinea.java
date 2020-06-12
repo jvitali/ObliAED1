@@ -4,7 +4,8 @@ package obligatorio.Nodos;
 import obligatorio.Listas.ListaPalabras;
 
 public class NodoLinea {
-    Object dato;
+    //int Numero linea
+    Object dato; 
     NodoLinea siguiente;
     ListaPalabras palabras;
 

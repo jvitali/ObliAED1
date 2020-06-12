@@ -2,7 +2,7 @@ package obligatorio.Interfaces;
 
 public interface IListas {
 
-    public void Agregar(Object dato);
+    public boolean Agregar(Object dato);
 
     public void Borrarinicio();
 

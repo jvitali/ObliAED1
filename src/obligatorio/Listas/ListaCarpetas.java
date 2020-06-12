@@ -10,7 +10,7 @@ public class ListaCarpetas implements IListas {
     public ListaCarpetas() {
         this.inicio = null;
     }
-    
+
     public NodoCarpeta getInicio() {
         return inicio;
     }
@@ -18,15 +18,17 @@ public class ListaCarpetas implements IListas {
     public void setInicio(NodoCarpeta inicio) {
         this.inicio = inicio;
     }
-   
-    
+
     @Override
-    public void Agregar(Object dato) {
+    public boolean Agregar(Object dato) {
         NodoCarpeta nuevo = new NodoCarpeta(dato);
-        if (!this.EsVacia()) {
+        Boolean ret = false;
+        if (!this.EsVacia() && !Buscar(dato)) {
             nuevo.setSiguiente(this.inicio);
+            ret = true;
         }
         this.inicio = nuevo;
+        return ret;
     }
 
     @Override
@@ -66,6 +68,21 @@ public class ListaCarpetas implements IListas {
             }
             if (aux != null) {
                 ret = true;
+            }
+        }
+        return ret;
+    }
+
+    public boolean Borrar(Object dato) {
+        boolean ret = false;
+        NodoCarpeta aux = this.inicio;
+        if (!this.EsVacia()) {
+            while (aux != null && ret != true) {
+                if (aux.getSiguiente().getDato() == dato) {
+                    aux.setSiguiente(aux.getSiguiente().getSiguiente());
+                    ret = true;
+                }
+                aux = aux.getSiguiente();
             }
         }
         return ret;

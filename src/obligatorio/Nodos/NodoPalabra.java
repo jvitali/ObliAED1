@@ -1,7 +1,7 @@
 package obligatorio.Nodos;
 
 public class NodoPalabra {
-
+    //String palabra
     Object dato;
     NodoPalabra siguiente;
 
