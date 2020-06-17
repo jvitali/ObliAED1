@@ -12,7 +12,7 @@ public class ListaArchivos implements IListas {
     public boolean Agregar(Object dato) {
         NodoArchivo nuevo = new NodoArchivo(dato);
         Boolean ret = false;
-        if (!this.EsVacia() && !Buscar(dato)) {
+        if (!this.EsVacia() && Buscar(dato) != null) {
             nuevo.setSiguiente(this.inicio);
             ret = true;
         }
@@ -47,8 +47,8 @@ public class ListaArchivos implements IListas {
         this.inicio = null;
     }
 
-    @Override
-    public Object Buscar(Object dato) {
+    
+    public NodoArchivo Buscar(Object dato) {
         NodoArchivo aux = this.inicio;
         if (!this.EsVacia()) {
             while (aux != null && aux.getDato() != dato) {

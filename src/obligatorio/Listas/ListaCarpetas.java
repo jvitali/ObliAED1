@@ -23,7 +23,7 @@ public class ListaCarpetas implements IListas {
     public boolean Agregar(Object dato) {
         NodoCarpeta nuevo = new NodoCarpeta(dato);
         Boolean ret = false;
-        if (!this.EsVacia() && !Buscar(dato)) {
+        if (!this.EsVacia() && Buscar(dato) != null) {
             nuevo.setSiguiente(this.inicio);
             ret = true;
         }
@@ -59,8 +59,7 @@ public class ListaCarpetas implements IListas {
     }
 
     
-    public Object Buscar(Object dato) {
-        
+    public NodoCarpeta Buscar(Object dato) {
         NodoCarpeta aux = this.inicio;
         if (!this.EsVacia()) {
             while (aux != null && aux.getDato() != dato) {

@@ -11,7 +11,7 @@ public class ListaPalabras implements IListas {
     public boolean Agregar(Object dato) {
         NodoPalabra nuevo = new NodoPalabra(dato);
         Boolean ret = false;
-        if (!this.EsVacia() && !Buscar(dato)) {
+        if (!this.EsVacia() && Buscar(dato) != null) {
             nuevo.setSiguiente(this.inicio);
             ret = true;
         }
@@ -46,18 +46,14 @@ public class ListaPalabras implements IListas {
         this.inicio = null;
     }
 
-    @Override
-    public boolean Buscar(Object dato) {
-        boolean ret = false;
+   
+    public NodoPalabra Buscar(Object dato) {
         NodoPalabra aux = this.inicio;
         if (!this.EsVacia()) {
             while (aux != null && aux.getDato() != dato) {
                 aux = aux.getSiguiente();
             }
-            if (aux != null) {
-                ret = true;
-            }
         }
-        return ret;
+        return aux;
     }
 }

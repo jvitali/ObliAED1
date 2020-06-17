@@ -6,6 +6,8 @@ import obligatorio.Listas.ListaUnidades;
 import obligatorio.Nodos.NodoUnidad;
 import obligatorio.Nodos.NodoArchivo;
 import obligatorio.Nodos.NodoCarpeta;
+import obligatorio.Nodos.NodoLinea;
+import obligatorio.Nodos.Paises;
 
 public class Sistema implements ISistema {
 
@@ -18,6 +20,10 @@ public class Sistema implements ISistema {
         this.maxCantPalabras = maxCantPalabras;
         unidades = new ListaUnidades();
         diccionario = new ListaPalabras();
+    }
+
+    public int[][] getCiudades() {
+        return ciudades;
     }
 
     @Override
@@ -166,14 +172,31 @@ public class Sistema implements ISistema {
     }
 
     @Override
-    public Retorno CargarDistancias(int[][] Ciudades) {
-        Retorno r = new Retorno(Retorno.Resultado.NO_IMPLEMENTADA);
+    public Retorno CargarDistancias(int[][] ciudades) {
+        Retorno r = new Retorno(Retorno.Resultado.OK);
+        this.ciudades = ciudades;
         return r;
     }
 
     @Override
     public Retorno BuscarCamino(int[][] M, String origen, String destino) {
-        Retorno r = new Retorno(Retorno.Resultado.NO_IMPLEMENTADA);
+        Retorno r = new Retorno(Retorno.Resultado.OK);
+        String camino = "";
+        int cantColumnas = M[0].length;
+        int escalas = 0;
+        int caminoMinimo = Integer.MAX_VALUE;
+        int posOrgien = Paises.getPosicion(origen);
+        int posDestino = Paises.getPosicion(destino);
+        for (int i = 0; i < cantColumnas; i++) {
+            if (M[posOrgien][i] != 0 && M[posDestino][i] != 0) {
+                if (M[posOrgien][i] + M[posDestino][i] < caminoMinimo) {
+                    caminoMinimo = M[posOrgien][i] + M[posDestino][i];
+                    escalas = i;
+                }
+
+            }
+        }
+        camino = origen + " - " + Paises.getNombre(escalas) + " - " + destino;        
         return r;
     }
 

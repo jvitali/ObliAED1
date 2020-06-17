@@ -11,12 +11,12 @@ public class ListaLineas implements IListas {
     public boolean Agregar(Object dato) {
         NodoLinea nuevo = new NodoLinea(dato);
         Boolean ret = false;
-        if (!this.EsVacia() && !Buscar(dato)) {
+        if (!this.EsVacia() && Buscar(dato) != null) {
             nuevo.setSiguiente(this.inicio);
             ret = true;
         }
         this.inicio = nuevo;
-        return  ret;
+        return ret;
     }
 
     @Override
@@ -46,19 +46,18 @@ public class ListaLineas implements IListas {
         this.inicio = null;
     }
 
-    @Override
-    public boolean Buscar(Object dato) {
-        boolean ret = false;
+    public NodoLinea Buscar(Object dato) {
         NodoLinea aux = this.inicio;
         if (!this.EsVacia()) {
             while (aux != null && aux.getDato() != dato) {
                 aux = aux.getSiguiente();
             }
-            if (aux != null) {
-                ret = true;
-            }
         }
-        return ret;
+        return aux;
+    }
+
+    public void InsertarLinea(NodoLinea linea) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
 }

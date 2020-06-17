@@ -12,5 +12,4 @@ public interface IListas {
 
     public void Vaciar();
 
-    public Object Buscar(Object dato);
 }
